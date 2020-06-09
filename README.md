@@ -1,5 +1,7 @@
 # cdc
-Change data capture with Kafka. Build connector image with Dockerfile.
+Change data capture with Kafka. Build kafkaconnect image with Dockerfile.
+
+#### Prequisites: kafkacluster + kafkaconnect running.
 
 ## How to regist
 	make regist-connect
