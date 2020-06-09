@@ -1,0 +1,28 @@
+{
+	"name": "mysqlsource-authservice",
+	"config": {
+		"connector.class": "io.debezium.connector.mysql.MySqlConnector",
+		"tasks.max": "1",
+		"database.hostname": "data-app-authservice-mysql",
+		"database.port": "3306",
+		"database.user": "root",
+		"database.password": "root",
+		"database.server.name": "authservice",
+
+		"database.history.kafka.bootstrap.servers": "infra-kafka-kafka-brokers:9092",
+		"database.server.id": "824001",
+		"include.schema.changes": "true",
+		"max.queue.size": 8192,
+		"max.batch.size": 2048,
+		"poll.interval.ms": 1000,
+		"transforms": "outbox",
+    	"transforms.outbox.type": "io.debezium.transforms.outbox.EventRouter",
+		"tombstones.on.delete": "false",
+    	"transforms.outbox.table.fields.additional.placement": "type:envelope:eventType",
+
+		"errors.deadletterqueue.topic.name": "dlq-authservice",
+		"database.whitelist": "authservice",
+		"database.history.kafka.topic": "history-authservice",
+		"table.whitelist": "authservice.events"
+	}
+ }
